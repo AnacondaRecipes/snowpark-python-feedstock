@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/snowflakedb/snowpark-python.git
+  git_url: git@github.com:snowflakedb/snowpark-python.git
   git_rev: v{{ version }}
 
 build:
