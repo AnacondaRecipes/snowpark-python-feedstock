@@ -1,16 +1,16 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "0.6.0" %}
+{% set version = "0.6.0-1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: git@github.com:snowflakedb/snowpark-python.git
+  git_url: https://github.com/snowflakedb/snowpark-python.git
   git_rev: v{{ version }}
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script:
     - {{ PYTHON }} -m pip install . --no-deps -vvv
@@ -24,7 +24,7 @@ requirements:
     - pip
   run:
     - python 3.8
-    - cloudpickle >=1.6.0
+    - cloudpickle >=1.6.0,<=2.0.0
     - snowflake-connector-python
     - setuptools >34.0.0
     - typing-extensions >=4.1.0
