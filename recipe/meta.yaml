@@ -38,4 +38,14 @@ test:
 
 about:
   home: https://github.com/snowflakedb/snowpark-python
-  summary: Snowpark Python
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE.txt
+  summary: Snowflake Snowpark Python API
+  description: |
+      The Snowpark library provides intuitive APIs for querying and
+      processing data in a data pipeline. Using this library, you can
+      build applications that process data in Snowflake without having
+      to move data to the system where your application code runs.
+  doc_url: https://docs.snowflake.com/en/LIMITEDACCESS/snowpark-python.html
+  dev_url: https://github.com/snowflakedb/snowpark-python
