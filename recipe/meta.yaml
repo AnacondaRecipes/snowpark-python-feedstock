@@ -13,16 +13,14 @@ build:
   number: 0
   noarch: python
   skip: true  # [win32 or s390x or py<36]
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps -vvv
+  script: {{ PYTHON }} -m pip install . --no-deps -vvv
 
 requirements:
-  build:
-    - wheel
-    - git
   host:
-    - python 3.8
+    - python
     - pip
+    - setuptools >=40.6.0
+    - wheel
   run:
     - python 3.8
     - cloudpickle >=1.6.0,<=2.0.0
@@ -48,5 +46,5 @@ about:
       processing data in a data pipeline. Using this library, you can
       build applications that process data in Snowflake without having
       to move data to the system where your application code runs.
-  doc_url: https://docs.snowflake.com/en/LIMITEDACCESS/snowpark-python.html
   dev_url: https://github.com/snowflakedb/snowpark-python
+  doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
