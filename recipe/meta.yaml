@@ -16,6 +16,8 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps -vvv
 
 requirements:
+  build:
+    - git
   host:
     - python
     - pip
