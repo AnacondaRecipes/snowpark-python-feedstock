@@ -12,20 +12,19 @@ source:
 build:
   number: 0
   noarch: python
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps -vvv
+  script: {{ PYTHON }} -m pip install . --no-deps -vvv
 
 requirements:
-  build:
-    - wheel
   host:
-    - python 3.8
+    - python
     - pip
+    - setuptools >=40.6.0
+    - wheel
   run:
     - python 3.8
     - cloudpickle >=1.6.0
+    # Requires snowflake-connector-python >=2.7.4 but Anaconda hasn't it yet
     - snowflake-connector-python
-    - setuptools >34.0.0
     - typing-extensions >=4.1.0
   run_constrained:
     - pandas >1,<1.4
@@ -37,4 +36,8 @@ test:
 
 about:
   home: https://github.com/snowflakedb/snowpark-python
+  license: Apache-2.0
+  license_family: Apache
   summary: Snowpark Python
+  dev_url: https://github.com/snowflakedb/snowpark-python
+  doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
