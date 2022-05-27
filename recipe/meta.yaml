@@ -1,18 +1,18 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: git@github.com:snowflakedb/snowpark-python.git
-  git_rev: v{{ version }}
+  url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 8f9aa5f43532164d7cb1fd3a9cb82d7477f46dfab319a8cef96a0d10faf62744
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vvv
+  skip: True  # [py<38 or py>=39 or win32 or s390x]
+  script: {{ PYTHON }} -m pip install . --no-deps -vvv 
 
 requirements:
   host:
@@ -21,9 +21,8 @@ requirements:
     - setuptools >=40.6.0
     - wheel
   run:
-    - python 3.8
-    - cloudpickle >=1.6.0
-    # Requires snowflake-connector-python >=2.7.4 but Anaconda hasn't it yet
+    - python
+    - cloudpickle >=1.6.0,<=2.0.0
     - snowflake-connector-python
     - typing-extensions >=4.1.0
   run_constrained:
@@ -31,13 +30,18 @@ requirements:
 
 test:
   imports:
-    - snowflake
     - snowflake.snowpark
 
 about:
   home: https://github.com/snowflakedb/snowpark-python
   license: Apache-2.0
   license_family: Apache
-  summary: Snowpark Python
+  license_file: LICENSE.txt
+  summary: Snowflake Snowpark Python API
+  description: |
+      The Snowpark library provides intuitive APIs for querying and
+      processing data in a data pipeline. Using this library, you can
+      build applications that process data in Snowflake without having
+      to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
   doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
