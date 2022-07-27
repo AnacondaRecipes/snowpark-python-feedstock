@@ -29,8 +29,12 @@ requirements:
     - pandas >1,<1.4
 
 test:
+  requires:
+    - pip
   imports:
     - snowflake.snowpark
+  commands:
+    - pip check
 
 about:
   home: https://github.com/snowflakedb/snowpark-python
