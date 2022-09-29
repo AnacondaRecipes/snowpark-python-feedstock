@@ -1,7 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 {% set sha256 = "ca16b2c133f4c73e31d5fd24ab30ccd7a241205b62e71c0c4e4b5206e274e7d7" %}
-# rebuild trigger 1
 
 package:
   name: {{ name|lower }}
@@ -27,8 +26,6 @@ requirements:
     - cloudpickle >=1.6.0,<=2.0.0
     - snowflake-connector-python>=2.7.12
     - typing-extensions >=4.1.0
-  run_constrained:
-    - pandas >1,<1.4
 
 test:
   requires:
