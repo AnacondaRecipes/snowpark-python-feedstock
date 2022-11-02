@@ -1,6 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "0.12.0" %}
-{% set sha256 = "e3de3fe7f7806fe76479c50de9c9ea9b05075bfa0a1c9b23850e35eacf0700c9" %}
+{% set version = "1.0.0" %}
+{% set sha256 = "2d77856df3cec23925505e1fe681e6e53aba11d463dd5c924232a0336f1e3a89" %}
 
 package:
   name: {{ name|lower }}
@@ -24,8 +24,8 @@ requirements:
   run:
     - python
     - cloudpickle >=1.6.0,<=2.0.0
-    - snowflake-connector-python>=2.7.12
-    - typing-extensions >=4.1.0
+    - snowflake-connector-python >=2.7.12,<3.0.0a0
+    - typing-extensions >=4.1.0,<5.0.0a0
 
 test:
   requires:
@@ -40,6 +40,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE.txt
+  license_url: https://github.com/snowflakedb/snowpark-python/blob/main/LICENSE.txt
   summary: Snowflake Snowpark Python API
   description: |
       The Snowpark library provides intuitive APIs for querying and
@@ -48,3 +49,4 @@ about:
       to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
   doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
+  doc_source_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
