@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py!=38 or win32]
+  skip: true  # [py!=38 or win32 or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps -vvv 
 
 requirements:
@@ -40,6 +40,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE.txt
+  license_url: https://github.com/snowflakedb/snowpark-python/blob/main/LICENSE.txt
   summary: Snowflake Snowpark Python API
   description: |
       The Snowpark library provides intuitive APIs for querying and
@@ -48,3 +49,4 @@ about:
       to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
   doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
+  doc_source_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
