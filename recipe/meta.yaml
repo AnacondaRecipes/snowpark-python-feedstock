@@ -11,11 +11,11 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
-  skip: true  # [py<38 or win32 or s390x or py>38 and not test_py39]
+  number: 2
+  skip: true  # [py<38 or win32 or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps -vvv 
   script_env:
-    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1  # [test_py39]
+    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
 
 requirements:
   host:
