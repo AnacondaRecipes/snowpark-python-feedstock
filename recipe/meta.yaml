@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<38 or win32 or s390x or py>38 and not test_py39]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv 
   script_env:
