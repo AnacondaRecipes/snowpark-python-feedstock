@@ -1,6 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.4.0" %}
-{% set sha256 = "83a6df9f2712271a12d14c59aa6ed9ee9f544b3520b6078824dd894e2ed274cf" %}
+{% set version = "1.5.0" %}
+{% set sha256 = "e9203942c8e4cba1067e6ea05aa35f52c19fd9d510386a5c0af859dafe05b35c" %}
 
 package:
   name: {{ name|lower }}
@@ -12,10 +12,10 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38 or win32 or s390x or py>38 and not test_py39]
+  skip: true  # [py<38 or s390x or py>=310 and not test_py310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv 
   script_env:
-    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1  # [test_py39]
+    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1  # [test_py310]
 
 requirements:
   host:
