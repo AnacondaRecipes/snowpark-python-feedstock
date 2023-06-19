@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38 or win32 or s390x or py>=310 and not test_py310]
+  skip: true  # [py<38 or s390x or py>=310 and not test_py310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv 
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1  # [test_py310]
