@@ -1,6 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.5.0" %}
-{% set sha256 = "e9203942c8e4cba1067e6ea05aa35f52c19fd9d510386a5c0af859dafe05b35c" %}
+{% set version = "1.5.1" %}
+{% set sha256 = "de4be59b246de323967772fcd4276baa8023f54f90413aff88dfb6b60b674d25" %}
 
 package:
   name: {{ name|lower }}
@@ -12,10 +12,9 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38 or s390x or py>=310 and not test_py310]
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv 
-  script_env:
-    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1  # [test_py310]
+  skip: true  # [py<38 or s390x or py>=311]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
+
 
 requirements:
   host:
@@ -26,14 +25,15 @@ requirements:
   run:
     - python
     - cloudpickle >=1.6.0,<=2.0.0
-    - snowflake-connector-python >=2.7.12,<4.0.0a0
-    - typing-extensions >=4.1.0,<5.0.0a0
+    - snowflake-connector-python >=2.7.12,<4.0.0
+    - typing-extensions >=4.1.0,<5.0.0
 
 test:
   requires:
     - pip
   imports:
     - snowflake.snowpark
+    - snowflake.snowpark._internal
   commands:
     - pip check
 
@@ -50,3 +50,9 @@ about:
       to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
   doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
+
+extra:
+  recipe-maintainers:
+    - sfc-gh-yixie
+    - sfc-gh-achandrasekaran
+    - sfc-gh-mkeller
