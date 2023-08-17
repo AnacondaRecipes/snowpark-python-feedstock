@@ -35,6 +35,7 @@ test:
   imports:
     - snowflake.snowpark
     - snowflake.snowpark._internal
+    - snowflake.snowpark._internal.analyzer
   commands:
     - pip check
 
