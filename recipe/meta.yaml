@@ -1,6 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.6.1" %}
-{% set sha256 = "e29b05ee3d62e0093bbf7cef83814e10a39cfccf3f80573bcb246cdfd4ce5714" %}
+{% set version = "1.7.0" %}
+{% set sha256 = "4f217109dd8f3d4f72b96a5d7324ce78474cc70f18d10172ece1f73664cddf80" %}
 
 package:
   name: {{ name|lower }}
