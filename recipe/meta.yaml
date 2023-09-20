@@ -1,5 +1,6 @@
 {% set name = "snowflake-snowpark-python" %}
 {% set version = "1.8.0" %}
+{% set sha256 = "95b652f5de6f633bc7e41200012adcd4b18f2ffc40f422c5c973336e665464be" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [(not py==311) or s390x]
+  skip: true  # [py<38 or s390x or py>=311]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
@@ -24,7 +25,7 @@ requirements:
     - wheel
   run:
     - python
-    - cloudpickle ==2.2.1
+    - cloudpickle >=1.6.0,<=2.0.0
     - snowflake-connector-python >=3.2.0,<4.0.0
     - pyyaml
 
