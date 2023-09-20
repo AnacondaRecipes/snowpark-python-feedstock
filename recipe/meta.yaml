@@ -11,7 +11,9 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38 or s390x or py>=311]
+  skip: true  # [(not py==311) or s390x]
+  script_env:
+    - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
 requirements:
