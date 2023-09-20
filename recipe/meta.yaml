@@ -24,7 +24,7 @@ requirements:
     - wheel
   run:
     - python
-    - cloudpickle >=1.6.0,<=2.0.0
+    - cloudpickle ==2.2.1
     - snowflake-connector-python >=3.2.0,<4.0.0
     - pyyaml
 
