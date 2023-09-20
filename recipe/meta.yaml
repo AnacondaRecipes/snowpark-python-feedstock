@@ -20,12 +20,12 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=40.6.0
+    - setuptools
     - wheel
   run:
     - python
     - cloudpickle >=1.6.0,<=2.0.0
-    - snowflake-connector-python >=3.0.4,<4.0.0
+    - snowflake-connector-python >=3.2.0,<4.0.0
     - pyyaml
 
 test:
