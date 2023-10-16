@@ -1,0 +1,7 @@
+upload_channels:
+  - sfe1ed40
+
+channels:
+  - https://staging.continuum.io/prefect/fs/arrow-cpp-feedstock/pr34/0ed9e35
+  - https://staging.continuum.io/prefect/fs/snowflake-connector-python-feedstock/pr15/61a1284
+ 
