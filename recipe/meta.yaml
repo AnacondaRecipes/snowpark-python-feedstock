@@ -1,6 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.8.0" %}
-{% set sha256 = "95b652f5de6f633bc7e41200012adcd4b18f2ffc40f422c5c973336e665464be" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +7,11 @@ package:
 
 source:
   url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 95b652f5de6f633bc7e41200012adcd4b18f2ffc40f422c5c973336e665464be
+  sha256: eb3e3d7f60ed35a60958c879899804874dd4c10c59e33efe69a0a22f7996ca73
 
 build:
-  number: 1
-  skip: true  # [py<38 or s390x or py>=311]
+  number: 0
+  skip: true  # [py<38 or s390x or py>311]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
@@ -25,8 +24,10 @@ requirements:
     - wheel
   run:
     - python
-    - cloudpickle >=1.6.0,<=2.0.0
+    - cloudpickle >=1.6.0,<=2.0.0 # [py<311]
+    - cloudpickle 2.2.1 # [py >=311]
     - snowflake-connector-python >=3.2.0,<4.0.0
+    - typing-extensions >=4.1.0,<5.0.0
     - pyyaml
 
 test:
