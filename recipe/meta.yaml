@@ -16,6 +16,7 @@ build:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
 
+# It is sufficient to look at [setup.py](https://github.com/snowflakedb/snowpark-python/blob/main/setup.py).
 requirements:
   host:
     - python
