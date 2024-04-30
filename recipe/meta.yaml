@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.14.0" %}
+{% set version = "1.15.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b374872d2c82ddb02c48f09bbca7b36dc0c00ecd7a78780b14c2e89b64d07c0b
+  sha256: 3e290cd004063073061e841c516a19a396347a839aa0fce01b878353f0f7777b
 
 build:
   number: 0
