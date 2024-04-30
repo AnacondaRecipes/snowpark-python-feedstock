@@ -62,3 +62,5 @@ extra:
     - sfc-gh-yixie
     - sfc-gh-achandrasekaran
     - sfc-gh-mkeller
+  skip-lints:
+    - python_build_tool_in_run
