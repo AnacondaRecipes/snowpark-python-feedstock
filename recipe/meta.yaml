@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.17.0" %}
+{% set version = "1.18.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 8ebaeac4cdede6975ec624e7c3fa8fc8555b7b915784717f815a8899c62f5734
+  sha256: 9f9fb18de23b71d51e8f6a02f97cff154db7ded4dbdedda4b721a3f3b6dfa55d
 
 build:
   number: 0
@@ -20,21 +20,20 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
+    - setuptools >=40.6.0
     - wheel
   run:
     - python
-    - cloudpickle >=1.6.0,<=2.2.1,!=2.1.0,!=2.2.0 # [py<311]
-    - cloudpickle 2.2.1                           # [py>=311]
+    - cloudpickle >=1.6.0,<=2.2.1,!=2.1.0,!=2.2.0  # [py<311]
+    - cloudpickle 2.2.1                            # [py>=311]
     - snowflake-connector-python >=3.10.0,<4.0.0
     - typing-extensions >=4.1.0,<5.0.0
     - pyyaml
-    - setuptools >=40.6.0
-    - wheel
   run_constrained:
-    # [pandas] requires modin==0.28.1 and pyarrow (no pinning)
+    # modin
     - pandas <3.0.0,>=1.0.0
     - modin ==0.28.1
+    # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
 
