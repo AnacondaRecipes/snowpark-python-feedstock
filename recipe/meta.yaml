@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.20.0" %}
+{% set version = "1.21.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a7e415571cced64bc2befa6c2a915adc0c82c2209dd55d98ccaea52712e34dff
+  sha256: d74af2cbf0d9b92ec9423be2595a21acf07c2b33bf5c5b6aa488c68bb633b601
 
 build:
-  number: 0
+  number: 100
   skip: true  # [py<38 or s390x or py>311]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
