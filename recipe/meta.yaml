@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.21.0" %}
+{% set version = "1.21.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/snowflakedb/snowpark-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d74af2cbf0d9b92ec9423be2595a21acf07c2b33bf5c5b6aa488c68bb633b601
+  sha256: aa2f487cdcccdb29c75b8b2b35704d7a4ad6260bf3251faa6c0ddefd0ba8fbaf
 
 build:
   number: 100
@@ -61,7 +61,7 @@ about:
       build applications that process data in Snowflake without having
       to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
-  doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
+  doc_url: https://docs.snowflake.com/en/developer-guide/snowpark/python/index
 
 extra:
   recipe-maintainers:
