@@ -61,7 +61,7 @@ about:
       build applications that process data in Snowflake without having
       to move data to the system where your application code runs.
   dev_url: https://github.com/snowflakedb/snowpark-python
-  doc_url: https://github.com/snowflakedb/snowpark-python/blob/main/README.md
+  doc_url: https://docs.snowflake.com/en/developer-guide/snowpark/python/index
 
 extra:
   recipe-maintainers:
