@@ -10,6 +10,8 @@ source:
   sha256: a9b96fbbef61e90e578f85c1cb3d46d590bf4a67663d0c284f633234e9352643
 
 build:
+  # The build number of this package should always start from 100
+  # for new versions. For more information ask the CODEOWNERS.
   number: 100
   skip: true  # [py<38 or s390x or py>311]
   script_env:
