@@ -33,10 +33,13 @@ requirements:
     - pyyaml
   run_constrained:
     # modin
+    - pandas >=1.0.0,<3.0.0
     - modin ==0.28.1
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
+    # secure-local-storage
+    - keyring >=23.1.0,<26.0.0
 
 test:
   requires:
