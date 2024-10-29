@@ -41,7 +41,6 @@ requirements:
     # secure-local-storage
     - keyring >=23.1.0,<26.0.0
 
-
 test:
   requires:
     - pip
