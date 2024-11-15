@@ -24,6 +24,8 @@ requirements:
     - pip
     - setuptools >=40.6.0
     - wheel
+    # Required to compile .proto files during setup.py execution
+    - libprotobuf
   run:
     - python
     - cloudpickle >=1.6.0,<=2.2.1,!=2.1.0,!=2.2.0  # [py<311]
