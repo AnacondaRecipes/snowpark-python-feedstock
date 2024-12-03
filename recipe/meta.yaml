@@ -12,7 +12,7 @@ source:
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
-  number: 100
+  number: 101
   skip: true  # [py<38 or s390x or py>311]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
@@ -25,7 +25,9 @@ requirements:
     - setuptools >=40.6.0
     - wheel
     # Required to compile .proto files during setup.py execution
-    - libprotobuf
+    # protoc is provided by protobuf. We do not have a package protoc-wheel.
+    - protobuf
+    - mypy-protobuf
   run:
     - python
     - cloudpickle >=1.6.0,<=2.2.1,!=2.1.0,!=2.2.0  # [py<311]
