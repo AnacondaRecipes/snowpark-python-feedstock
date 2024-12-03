@@ -25,6 +25,7 @@ requirements:
     - setuptools >=40.6.0
     - wheel
     # Required to compile .proto files during setup.py execution
+    # protoc is provided by protobuf. We do not have a package protoc-wheel.
     - protobuf
     - mypy-protobuf
   run:
