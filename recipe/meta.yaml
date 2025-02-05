@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.26.0" %}
+{% set version = "1.27.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: da982696597057fae66a76ebea8b7a9bc8d05a5f402eba0cbd6c3a8267457208
+  sha256: 897036020d1cd7f15e041cd6989b48ff3db67ecadba8465ffdfa120e6e1e0d46
 
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
   number: 100
-  skip: true  # [py<38 or s390x or py>311]
+  skip: true  # [py<38 or s390x or py>312]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
