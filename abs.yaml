@@ -3,3 +3,6 @@ build_parameters:
   - "--skip-existing"
   - "--error-overlinking"
   - "--error-overdepending"
+
+channels:
+  - https://staging.continuum.io/prefect/fs/snowflake-connector-python-feedstock/pr30/8e4eeb6
