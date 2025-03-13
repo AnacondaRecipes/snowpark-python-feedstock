@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.28.0" %}
+{% set version = "1.29.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 8a39fdc60fe73b04dddc4889ab5ad5a8365a426b66c4a61a66443301f5d3b422
+  sha256: 072b99e4ee6765049e26045c839fd961ef46dc64f923f63befac143094750856
 
 build:
   # The build number of this package should always start from 100
@@ -33,8 +33,8 @@ requirements:
     - mypy-protobuf
   run:
     - python
-    - cloudpickle >=1.6.0,<=2.2.1,!=2.1.0,!=2.2.0
-    - snowflake-connector-python >=3.12.0,<4.0.0
+    - cloudpickle >=1.6.0,<=3.0.0,!=2.1.0,!=2.2.0
+    - snowflake-connector-python >=3.14.0,<4.0.0
     - typing-extensions >=4.1.0,<5.0.0
     - pyyaml
     # Snowpark IR
