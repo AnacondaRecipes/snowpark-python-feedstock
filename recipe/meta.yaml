@@ -13,7 +13,7 @@ build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
   number: 100
-  skip: true  # [py<38 or s390x or py>312]
+  skip: true  # [py<38 or py>312]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
