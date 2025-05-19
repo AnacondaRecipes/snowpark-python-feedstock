@@ -51,6 +51,7 @@ requirements:
     # secure-local-storage
     - keyring >=23.1.0,<26.0.0
     - snowflake-ml-python >=1.8.0  # [py<312]
+
 test:
   requires:
     - pip
