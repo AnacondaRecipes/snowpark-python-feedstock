@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.34.0" %}
+{% set version = "1.35.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: f1f5580772cf05c74456c0314c88f6ca466f6cb13dc593ddaed94e6364b74a75
+  sha256: 07602731ffeb7654095ce1a4fb43f99d8b7f9709cc26485f33de8cf6b1495a33
 
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
   number: 100
-  skip: true  # [py<39 or py>312]
+  skip: true  # [py<39 or py>313]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
@@ -56,16 +56,73 @@ test:
   requires:
     - pip
   imports:
+    - snowflake
     - snowflake.snowpark
     - snowflake.snowpark._internal
     - snowflake.snowpark._internal.analyzer
-    - snowflake.snowpark._internal.ast
-    - snowflake.snowpark._internal.compiler
+    - snowflake.snowpark._internal.analyzer.analyzer
+    - snowflake.snowpark._internal.analyzer.analyzer_utils
+    - snowflake.snowpark._internal.analyzer.binary_expression
+    - snowflake.snowpark._internal.analyzer.binary_plan_node
+    - snowflake.snowpark._internal.analyzer.datatype_mapper
+    - snowflake.snowpark._internal.analyzer.expression
+    - snowflake.snowpark._internal.analyzer.grouping_set
+    - snowflake.snowpark._internal.analyzer.metadata_utils
+    - snowflake.snowpark._internal.analyzer.query_plan_analysis_utils
+    - snowflake.snowpark._internal.analyzer.schema_utils
+    - snowflake.snowpark._internal.analyzer.select_statement
+    - snowflake.snowpark._internal.analyzer.snowflake_plan
+    - snowflake.snowpark._internal.analyzer.snowflake_plan_node
+    - snowflake.snowpark._internal.analyzer.sort_expression
+    - snowflake.snowpark._internal.analyzer.table_function
+    - snowflake.snowpark._internal.analyzer.table_merge_expression
+    - snowflake.snowpark._internal.analyzer.unary_expression
+    - snowflake.snowpark._internal.analyzer.unary_plan_node
+    - snowflake.snowpark._internal.analyzer.window_expression
+    - snowflake.snowpark._internal.ast.batch
+    - snowflake.snowpark._internal.ast.utils
+    - snowflake.snowpark._internal.code_generation
+    - snowflake.snowpark._internal.compiler.cte_utils
+    - snowflake.snowpark._internal.compiler.large_query_breakdown
+    - snowflake.snowpark._internal.compiler.query_generator
+    - snowflake.snowpark._internal.compiler.repeated_subquery_elimination
+    - snowflake.snowpark._internal.compiler.telemetry_constants
+    - snowflake.snowpark._internal.compiler.utils
     - snowflake.snowpark._internal.data_source
+    - snowflake.snowpark._internal.data_source.datasource_partitioner
+    - snowflake.snowpark._internal.data_source.datasource_reader
+    - snowflake.snowpark._internal.data_source.datasource_typing
     - snowflake.snowpark._internal.data_source.dbms_dialects
+    - snowflake.snowpark._internal.data_source.dbms_dialects.base_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.databricks_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.mysql_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.oracledb_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.postgresql_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.sqlite3_dialect
+    - snowflake.snowpark._internal.data_source.dbms_dialects.sqlserver_dialect
     - snowflake.snowpark._internal.data_source.drivers
+    - snowflake.snowpark._internal.data_source.drivers.base_driver
+    - snowflake.snowpark._internal.data_source.drivers.databricks_driver
+    - snowflake.snowpark._internal.data_source.drivers.oracledb_driver
+    - snowflake.snowpark._internal.data_source.drivers.psycopg2_driver
+    - snowflake.snowpark._internal.data_source.drivers.pymsql_driver
+    - snowflake.snowpark._internal.data_source.drivers.pyodbc_driver
+    - snowflake.snowpark._internal.data_source.drivers.sqlite_driver
+    - snowflake.snowpark._internal.data_source.utils
+    - snowflake.snowpark._internal.debug_utils
+    - snowflake.snowpark._internal.error_message
+    - snowflake.snowpark._internal.open_telemetry
+    - snowflake.snowpark._internal.packaging_utils
     - snowflake.snowpark._internal.proto.generated
-    - snowflake.snowpark.mock
+    - snowflake.snowpark._internal.proto.generated.ast_pb2
+    - snowflake.snowpark._internal.select_projection_complexity_utils
+    - snowflake.snowpark._internal.server_connection
+    - snowflake.snowpark._internal.telemetry
+    - snowflake.snowpark._internal.temp_table_auto_cleaner
+    - snowflake.snowpark._internal.type_utils
+    - snowflake.snowpark._internal.udf_utils
+    - snowflake.snowpark._internal.utils
+    - snowflake.snowpark._internal.xml_reader
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
