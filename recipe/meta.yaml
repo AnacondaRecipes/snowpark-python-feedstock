@@ -43,7 +43,6 @@ requirements:
   run_constrained:
     # modin
     - pandas <=2.3.1
-    # Snowpark pandas requires modin 0.33.x or 0.34.x, which are compatible with pandas 2.2.x
     - modin >=0.35.0,<0.37.0
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
