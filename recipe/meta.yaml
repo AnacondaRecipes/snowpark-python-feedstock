@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.38.0" %}
+{% set version = "1.39.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 778c40776399c09846c77aa8f9b53773d9c15e793e50c6009eeccafbb43375cc
+  sha256: 0eba7a6d3b6c86c06b9539059b60d1aec4fec45b409ddb68c7e96b9ee11421ef
 
 build:
   # The build number of this package should always start from 100
@@ -33,7 +33,7 @@ requirements:
   run:
     - python
     - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
-    - snowflake-connector-python >=3.14.0,<4.0.0
+    - snowflake-connector-python >=3.17.0,<4.0.0
     - typing-extensions >=4.1.0,<5.0.0
     - pyyaml
     # Snowpark IR
@@ -43,8 +43,7 @@ requirements:
   run_constrained:
     # modin
     - pandas <=2.3.1
-    # Snowpark pandas requires modin 0.33.x or 0.34.x, which are compatible with pandas 2.2.x
-    - modin >=0.34.0,<0.36.0
+    - modin >=0.35.0,<0.37.0
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
