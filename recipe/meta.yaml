@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.42.0" %}
+{% set version = "1.43.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: e994b3860c816d1b5fdf0c6272f8d9e41505e470140b063ff9418d234fd8cc00
+  sha256: 282afccb8ba60289a263a42f3040b762c216eef4e64a3aea08ad7dda98a07dff
 
 build:
   # The build number of this package should always start from 100
@@ -29,7 +29,7 @@ requirements:
     # Snowpark IR
     - protobuf ==3.20.1  # [py<=310]
     - protobuf ==4.25.3  # [py>310]
-    - mypy-protobuf
+    - mypy-protobuf <=3.6.0
   run:
     - python
     - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
@@ -47,6 +47,7 @@ requirements:
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
+    - opentelemetry-exporter-otlp >=1.0.0,<2.0.0
     # secure-local-storage
     - keyring >=23.1.0,<26.0.0
     - snowflake-ml-python >=1.8.0  # [py<312]
@@ -127,7 +128,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    # Requires Snowflake connection to run upstream tests. See: https://github.com/snowflakedb/snowpark-python/blob/v1.40.0/tests/README.md
+    # Requires Snowflake connection to run upstream tests. See: https://github.com/snowflakedb/snowpark-python/blob/v1.43.0/tests/README.md
 
 about:
   home: https://github.com/snowflakedb/snowpark-python
