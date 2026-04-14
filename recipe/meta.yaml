@@ -1,19 +1,19 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.48.1" %}
+{% set version = "1.49.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 3095558d7cc543106ada155fb02e630f0446708919f5cc5b2acab997eb99433e
+  sha256: 8491dd60ea29a38156ff7773f251a8292d065f736d35405ba7779ff45518f2d1
 
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
   number: 100
-  skip: true  # [py<39 or py>313]
+  skip: true  # [py<39 or py>314]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
@@ -28,7 +28,10 @@ requirements:
     # have a look at their recipe/meta.yaml
     # Snowpark IR
     - protobuf ==3.20.1  # [py<=310]
-    - protobuf ==4.25.3  # [py>310]
+    - protobuf ==4.25.3  # [py>310 and py<314]
+    - protobuf==5.29.3  # [py>=314]
+    - libprotobuf >=5.29.3  # [py>=314]
+    # mypy-protobuf 3.7.0 requires protobuf >= 5.26
     - mypy-protobuf <=3.6.0
   run:
     - python
@@ -40,10 +43,15 @@ requirements:
     - protobuf >=3.20,<6.34
     - python-dateutil
     - tzlocal
+    # setuptools and wheel are in snowpark's install_requires but missing 
+    # from the recipe's run: deps — py314 is the first new Python version 
+    # added after Anaconda's pip stopped bundling them as implicit dependencies.
+    - setuptools >=40.6.0  # [py>=314]
+    - wheel  # [py>=314]
   run_constrained:
     # modin
-    - pandas <=2.3.1
     - modin >=0.36.0,<0.38.0
+    - pandas <=2.3.1
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
