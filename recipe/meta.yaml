@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.49.0" %}
+{% set version = "1.50.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 8491dd60ea29a38156ff7773f251a8292d065f736d35405ba7779ff45518f2d1
+  sha256: 8af823326c2681333bf59ad3d6152b07098b7926165667a7fdcebd5adb53642f
 
 build:
   # The build number of this package should always start from 100
@@ -38,6 +38,9 @@ requirements:
     - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
     - snowflake-connector-python >=3.17.0,<5.0.0
     - typing-extensions >=4.1.0,<5.0.0
+    # need to pin libffi because of problems in cryptography.
+    # This might no longer hold true but keep it just to avoid it from biting us again
+    - libffi <=3.4.4
     - pyyaml
     # Snowpark IR
     - protobuf >=3.20,<6.34
@@ -51,14 +54,13 @@ requirements:
   run_constrained:
     # modin
     - modin >=0.36.0,<0.38.0
-    - pandas <=2.3.1
+    - pandas <=2.4
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
     - opentelemetry-exporter-otlp >=1.0.0,<2.0.0
     # secure-local-storage
     - keyring >=23.1.0,<26.0.0
-    - snowflake-ml-python >=1.8.0  # [py<312]
 
 test:
   requires:
