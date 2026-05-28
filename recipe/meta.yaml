@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.50.1" %}
+{% set version = "1.51.0" %}
 
 package:
   name: {{ name }}
@@ -7,16 +7,16 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 780a7595fa4fd8989a3519dd825d8de0a79b8dd98f6bf95c853a0b3f2df9db43
+  sha256: 6e48616fc730e7785732081dc91d029f65419a56614c0e0915a432dc83f6d71c
 
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
   number: 100
-  skip: true  # [py<39 or py>314]
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
+  skip: true  # [py<39 or py>314]
 
 requirements:
   host:
@@ -35,13 +35,13 @@ requirements:
     - mypy-protobuf <=3.6.0
   run:
     - python
-    - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
     - snowflake-connector-python >=3.17.0,<5.0.0
     - typing-extensions >=4.1.0,<5.0.0
     # need to pin libffi because of problems in cryptography.
     # This might no longer hold true but keep it just to avoid it from biting us again
     - libffi <=3.4.4
     - pyyaml
+    - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
     # Snowpark IR
     - protobuf >=3.20,<6.34
     - python-dateutil
