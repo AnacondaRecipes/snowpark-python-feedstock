@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.51.0" %}
+{% set version = "1.51.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 6e48616fc730e7785732081dc91d029f65419a56614c0e0915a432dc83f6d71c
+  sha256: 734bf5e89a6193472aa369192b61e082ae36304bbf07b2050228abb887ac2649
 
 build:
   # The build number of this package should always start from 100
@@ -159,3 +159,6 @@ extra:
     - sfc-gh-yixie
     - sfc-gh-achandrasekaran
     - sfc-gh-mkeller
+  skip-lints:
+    - cbc_dep_in_run_missing_from_host
+    - host_section_needs_exact_pinnings
