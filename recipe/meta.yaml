@@ -16,7 +16,7 @@ build:
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
-  skip: true  # [py<39 or py>314]
+  skip: true  # [py<310 or py>314]
 
 requirements:
   host:
