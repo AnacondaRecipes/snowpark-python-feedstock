@@ -1,5 +1,5 @@
 {% set name = "snowflake-snowpark-python" %}
-{% set version = "1.52.0" %}
+{% set version = "1.53.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: c25ffe570f4b858c737312e451b0940044bebbaa2e6b3d2c3fc995e874874d9a
+  sha256: 6eab04d5703fac72982f3666140c006d6fb9964d46a04fd953766410af8fc62e
 
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
-  number: 101
+  number: 100
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
@@ -29,7 +29,7 @@ requirements:
     # Snowpark IR
     - protobuf ==3.20.1  # [py<=310]
     - protobuf ==4.25.3  # [py>310 and py<314]
-    - protobuf==5.29.3  # [py>=314]
+    - protobuf ==5.29.3  # [py>=314]
     - libprotobuf >=5.29.3  # [py>=314]
     # mypy-protobuf 3.7.0 requires protobuf >= 5.26
     - mypy-protobuf <=3.6.0
@@ -40,7 +40,8 @@ requirements:
     - pyyaml
     - cloudpickle >=1.6.0,<=3.1.1,!=2.1.0,!=2.2.0
     # Snowpark IR
-    - protobuf >=3.20,<6.34
+    - protobuf >=3.20,<6.34  # [py<314]
+    - protobuf >=5.29.0,<6.34  # [py>=314]
     - python-dateutil
     - tzlocal
     # setuptools and wheel are in snowpark's install_requires but missing 
@@ -49,9 +50,11 @@ requirements:
     - setuptools >=40.6.0  # [py>=314]
     - wheel  # [py>=314]
   run_constrained:
+    # pandas
+    #- pandas <3.0
     # modin
     - modin >=0.36.0,<0.38.0
-    - pandas <=2.4
+    #- pandas <=2.4
     # opentelemetry
     - opentelemetry-api >=1.0.0,<2.0.0
     - opentelemetry-sdk >=1.0.0,<2.0.0
