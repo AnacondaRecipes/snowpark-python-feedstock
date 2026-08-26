@@ -12,7 +12,7 @@ source:
 build:
   # The build number of this package should always start from 100
   # for new versions. For more information ask the CODEOWNERS.
-  number: 101
+  number: 102
   script_env:
     - SNOWFLAKE_IS_PYTHON_RUNTIME_TEST=1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -v
@@ -29,8 +29,8 @@ requirements:
     # Snowpark IR
     - protobuf ==3.20.1  # [py<=310]
     - protobuf ==4.25.3  # [py>310 and py<314]
-    - protobuf ==5.29.3  # [py>=314]
-    - libprotobuf >=5.29.3  # [py>=314]
+    - protobuf >=5.29.3,<6.34  # [py>=314]
+    - libprotobuf >=5.29.3,<6.34  # [py>=314]
     # mypy-protobuf 3.7.0 requires protobuf >= 5.26
     - mypy-protobuf <=3.6.0
   run:
